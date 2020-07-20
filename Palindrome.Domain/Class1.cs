@@ -6,36 +6,37 @@ namespace Palindrome.Domain
     {
         public static bool PalindromeChecker(string input)
         {
-            string forwards = new StringBuilder();
-            string reverse = new StringBuilder();
+            var str = input.ToLower();
+            var forwards = new System.Text.StringBuilder();
+            var reverse = new System.Text.StringBuilder();
 
-            for (var i = 0; i < input.Length; i++)
+            for (var i = 0; i < str.Length; i++)
             {
                 if (
-                    (input[i] >= '0' && input[i] <= '9')
-                    || (input[i] >= 'A' && input[i] <= 'z')
+                    (str[i] >= '0' && str[i] <= '9')
+                    || (str[i] >= 'A' && str[i] <= 'z')
                 )
                 {
-                    forwards.Append(input[i]);
+                    forwards.Append(str[i]);
                 }
 
-                var reverse_index = input.Length - i - 1;
+                var reverse_index = str.Length - i - 1;
                 if (
-                    (input[reverse_index] >= '0' && input[reverse_index] <= '9')
-                    || (input[reverse_index] >= 'A' && input[reverse_index] <= 'z')
+                    (str[reverse_index] >= '0' && str[reverse_index] <= '9')
+                    || (str[reverse_index] >= 'A' && str[reverse_index] <= 'z')
                 )
                 {
-                    reverse.Append(input[i]);
+                    reverse.Append(str[reverse_index]);
                 }
+            }
 
-                if (forwards.Equals(reverse))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+            if (forwards.ToString().Equals(reverse.ToString()))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
